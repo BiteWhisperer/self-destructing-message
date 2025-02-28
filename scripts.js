@@ -27,15 +27,26 @@ window.addEventListener('load', function() {
         const message = localStorage.getItem(messageId);
         if (message) {
             document.body.innerHTML = `
-                <div class="container">
+                <div id="warningBox" class="warning-box">
+                    <p>You only have 2 minutes to read this message.</p>
+                    <button id="okButton">OK</button>
+                </div>
+                <div id="messageContainer" class="container" style="display: none;">
                     <h1>Self-Destructing Message</h1>
                     <p id="messageContent">${message}</p>
                     <p id="timerMessage">You only have 2 minutes to read this message.</p>
                 </div>`;
-            setTimeout(function() {
-                alert('This message will now self-destruct!');
-                window.location.href = window.location.pathname; // Clear URL params
-            }, 120000); // 120000 milliseconds = 2 minutes
+            
+            document.getElementById('okButton').addEventListener('click', function() {
+                document.getElementById('warningBox').style.display = 'none';
+                document.getElementById('messageContainer').style.display = 'block';
+
+                setTimeout(function() {
+                    alert('This message will now self-destruct!');
+                    window.location.href = window.location.pathname; // Clear URL params
+                }, 120000); // 120000 milliseconds = 2 minutes
+            });
+
             localStorage.removeItem(messageId);
         } else {
             alert('This message has already been read or does not exist.');
