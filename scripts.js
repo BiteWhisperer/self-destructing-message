@@ -26,8 +26,12 @@ window.addEventListener('load', function() {
     if (messageId) {
         const message = localStorage.getItem(messageId);
         if (message) {
-            alert('You only have 2 minutes to read this message.');
-            alert(`Your message: ${message}`);
+            document.body.innerHTML = `
+                <div class="container">
+                    <h1>Self-Destructing Message</h1>
+                    <p id="messageContent">${message}</p>
+                    <p id="timerMessage">You only have 2 minutes to read this message.</p>
+                </div>`;
             setTimeout(function() {
                 alert('This message will now self-destruct!');
                 window.location.href = window.location.pathname; // Clear URL params
@@ -46,4 +50,3 @@ document.addEventListener('visibilitychange', function() {
         document.getElementById('screenshotWarning').style.display = 'none';
     }
 });
-
