@@ -6,6 +6,7 @@ body {
     height: 100vh;
     background-color: #121212;
     color: #ffffff;
+    margin: 0;
 }
 
 .container {
@@ -56,4 +57,23 @@ button:hover {
     font-size: 1.2em;
     text-align: center;
     z-index: 1000;
+}
+
+.warning-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffcc00;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.warning-box button {
+    margin-top: 10px;
 }
